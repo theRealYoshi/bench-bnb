@@ -1,4 +1,5 @@
 var Map = React.createClass({
+  mixins: [ReactRouter.History],
   getInitialState: function(){
     return {markers: []};
   },
@@ -15,6 +16,9 @@ var Map = React.createClass({
       var bounds = this._getBounds();
       ApiUtil.fetchBenches(bounds);
     }.bind(this));  // this listens for a change in the map
+    this.map.addListener('click', function(event){
+      this.props.handleMapClick(event.latLng);
+    }.bind(this));
   },
   _getBounds: function(){
     var latlngBounds = this.map.getBounds();
@@ -36,10 +40,12 @@ var Map = React.createClass({
   },
   _addMarkers: function(){
     var benches = BenchStore.all();
+    // var image = 'http://www.realfitscore.com/images/silouhettes/realFIT_Max-Bench-Press_v02.png';
     benches.forEach(function(bench){
       var latlng = new google.maps.LatLng(bench.lat, bench.lng);
       var tempMarker = new google.maps.Marker({ position: latlng,
                                                 title: bench.description});
+                                                // icon: image});
       if (this.state.markers.indexOf(tempMarker) === -1){ // if it's not included
         this.state.markers.push(tempMarker);
       }
@@ -57,7 +63,7 @@ var Map = React.createClass({
   },
   render: function(){
       return (
-        <div className='map' ref="map" >
+        <div className='map' ref="map">
         </div>
       );
   }

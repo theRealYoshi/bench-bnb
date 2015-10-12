@@ -8,4 +8,6 @@ class Bench < ActiveRecord::Base
     minLng = bounds[:southWest][:lng]
     benches = Bench.where(:lat => minLat..maxLat, :lng => minLng..maxLng)
   end
+
+  
 end

@@ -17,7 +17,7 @@ window.BenchIndex = React.createClass({
         <ul>
           {
             this.state.benches.map(function(bench){
-              return <li>{bench.description}</li>;
+              return <BenchIndexItem className='bench' bench={bench} />;
             })
           }
         </ul>

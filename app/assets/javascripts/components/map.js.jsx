@@ -12,9 +12,10 @@ var Map = React.createClass({
     this.map = new google.maps.Map(map, mapOptions); // this initializes the map
     BenchStore.addChangeListener(this._addMarkers);
     this.map.addListener('idle',function(){
-      this._removeMarkers();
       var bounds = this._getBounds();
-      ApiUtil.fetchBenches(bounds);
+      ApiActions.updateFilterMapBound(bounds);
+      var filtered = FilterStore.all();
+      ApiUtil.fetchFilteredBenches(filtered);
     }.bind(this));  // this listens for a change in the map
     this.map.addListener('click', function(event){
       this.props.handleMapClick(event.latLng);
@@ -39,6 +40,7 @@ var Map = React.createClass({
     return bounds;
   },
   _addMarkers: function(){
+    this._removeMarkers();
     var benches = BenchStore.all();
     // var image = 'http://www.realfitscore.com/images/silouhettes/realFIT_Max-Bench-Press_v02.png';
     benches.forEach(function(bench){

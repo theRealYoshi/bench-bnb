@@ -13,9 +13,8 @@ var ApiUtil = {
     $.ajax({
       url: '/api/benches',
       type: 'POST',
-      data: {bench: newBench},// can you pass it as params?
+      data: {bench: newBench},
       success: function(responseBench){
-        console.log(responseBench);
         ApiActions.createBench(responseBench);
         redirect();
       }
@@ -23,7 +22,15 @@ var ApiUtil = {
   },
   hoverBenchIndexItem: function(index){
     //on hover of item
-
-
+  },
+  fetchFilteredBenches: function(filtered){
+    $.ajax({
+      url: '/api/benches',
+      type: 'GET',
+      data: filtered,
+      success: function(responseFiltered){
+        ApiActions.updateFilteredBenches(responseFiltered);
+      }
+    });
   }
 };

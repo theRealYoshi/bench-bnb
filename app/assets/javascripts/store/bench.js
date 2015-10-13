@@ -32,6 +32,10 @@
           add_bench(payload.newBench);
           root.BenchStore.changed();
           break;
+        case (BenchConstants.UPDATE_BENCHES):
+          reset_benches(payload.benches);
+          root.BenchStore.changed();
+          break;
       }
     })
   });

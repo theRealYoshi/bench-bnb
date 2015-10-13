@@ -24,28 +24,33 @@ var BenchForm = React.createClass({
   },
   render: function(){
     return (
-      <form className='new-bench' onSubmit={this.createBench}>
-        <div>
-          <label>Latitude:</label>
-          <input type='text' valueLink={this.linkState('lat')}/>
-        </div>
+      <form className="bench-form" onSubmit={this.createBench}>
+        <label key="1">Latitude:</label>
+        <input type='text' key="2" id="lat" valueLink={this.linkState('lat')}/>
         <br />
-        <div>
-          <label>Longitude:</label>
-          <input type='text' valueLink={this.linkState('lng')}/>
-        </div>
+        <label key="3">Longitude:</label>
+        <input type='text' key="4" id="long" valueLink={this.linkState('lng')}/>
         <br />
-        <div>
-          <label>Description:</label>
-          <input type='text' valueLink={this.linkState('description')}/>
-        </div>
+        <label key='5'>Description:</label>
+        <input type='text' key='6' id="description" valueLink={this.linkState('description')}/>
         <br />
-        <div>
-          <label>Seating:</label>
-          <input type='text' valueLink={this.linkState('seating')}/>
-        </div>
+        <label key='7'>Seating:</label>
+        <input type='text' key='8' id="seating" valueLink={this.linkState('seating')}/>
+        <br />
         <button>Create Bench</button>
       </form>
     );
   }
 });
+
+
+        // <br />
+        // <label>Longitude:</label>
+        // <input type='text' valueLink={this.linkState('lng')}/>
+        // <br />
+        // <label>Description:</label>
+        // <input type='text' valueLink={this.linkState('description')}/>
+        // <br />
+        // <label>Seating:</label>
+        // <input type='text' valueLink={this.linkState('seating')}/>
+        // <button>Create Bench</button>

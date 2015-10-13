@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-homeBench = Bench.create([{ description: 'my home', lat:37.78646, lng:-122.39472}])
-workshopBench = Bench.create([{ description: 'workshop cafe', lat:37.79080, lng:-122.40209}])
-appacademyBench = Bench.create([{ description: 'app academy', lat:37.78106, lng:-122.41146}])
-japantownBench = Bench.create([{ description: 'japantown', lat:37.78541, lng:-122.42938}])
+homeBench = Bench.create([{ description: 'my home', lat:37.78646, lng:-122.39472, seating: 4}])
+workshopBench = Bench.create([{ description: 'workshop cafe', lat:37.79080, lng:-122.40209, seating: 1}])
+appacademyBench = Bench.create([{ description: 'app academy', lat:37.78106, lng:-122.41146, seating: 2}])
+japantownBench = Bench.create([{ description: 'japantown', lat:37.78541, lng:-122.42938, seating: 3}])
+zeroBench = Bench.create([{ description: 'zero bench', lat:37.90541, lng:-122.494038, seating: 0}])
